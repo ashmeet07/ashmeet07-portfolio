@@ -1,0 +1,123 @@
+/* ElectricBorder.css */
+
+/* --- GLOBAL THEME DEFAULTS (Light Theme Default) --- */
+/* The color prop from React takes precedence, but this is the fallback. */
+:root {
+  /* Fallback color for the light theme (e.g., a vibrant pink/red) */
+  --eb-theme-color: #ff1664ff; 
+}
+
+/* Dark Theme Override (Assumes your application adds a 'dark' class to a parent element like <html> or <body>) */
+.dark {
+  /* Fallback color for the dark theme (e.g., a cool electric blue/green) */
+  --eb-theme-color: #00ffc8ff; 
+}
+
+
+/* --- 1. BASE CONTAINER & LAYERS (Z-Index fix retained) --- */
+.electric-border {
+  position: relative;
+  border-radius: 12px; 
+  padding: 1px;
+}
+
+.eb-layers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden; 
+  z-index: 2; 
+}
+
+/* --- 2. STROKE LAYER: DEFAULT (SMALL SCREEN - LIGHTNING OFF) STATE --- */
+.eb-stroke {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  
+  /* 💡 COLOR FIX: Use the prop variable, falling back to the theme-aware variable */
+  border: var(--eb-border-width, 2px) solid var(--electric-border-color, var(--eb-theme-color));
+  filter: none; 
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+/* 💥 HIDING FOR EFFICIENCY ON SMALL SCREENS (Reverse of previous logic for large screen lightning) */
+@media (max-width: 1023px) { 
+  .electric-border .eb-stroke {
+      opacity: 0; 
+      visibility: hidden;
+      /* Keep the solid border definition here for the small-screen glow layers */
+  }
+}
+
+/* --- 3. GLOW LAYERS: DEFAULT (SMALL SCREEN - ASTONISHING) STATE --- */
+.eb-glow-1, .eb-glow-2 {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: opacity 0.3s;
+}
+
+.eb-glow-1 {
+  /* 💡 COLOR FIX: Use the prop variable, falling back to the theme-aware variable */
+  box-shadow: 0 0 4px var(--electric-border-color, var(--eb-theme-color)), 0 0 8px var(--electric-border-color, var(--eb-theme-color));
+  opacity: 0.8; /* HIGH OPACITY for astonishing glow on small devices */
+}
+
+.eb-glow-2 {
+  /* 💡 COLOR FIX: Use the prop variable, falling back to the theme-aware variable */
+  box-shadow: 0 0 8px 1px var(--electric-border-color, var(--eb-theme-color)), 0 0 16px 2px var(--electric-border-color, var(--eb-theme-color));
+  opacity: 0.5;
+}
+
+.eb-background-glow {
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    /* 💡 COLOR FIX: Use the prop variable, falling back to the theme-aware variable */
+    background: radial-gradient(circle at 50% 50%, var(--electric-border-color, var(--eb-theme-color)) 0%, transparent 60%);
+    opacity: 0.05; 
+}
+
+/* --- 4. SVG & CONTENT --- */
+.eb-svg {
+  position: absolute;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.eb-content {
+  position: relative;
+  /* 💡 Z-INDEX FIX: Remove z-index: 1 to ensure content is below eb-layers (z-index: 2) */
+  z-index: auto; 
+  border-radius: inherit;
+}
+
+/* ---------------------------------------------------------------- */
+/* 💡 MEDIA QUERY: LARGE SCREENS (>= 1024px) - ACTIVATE LIGHTNING */
+/* ---------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  
+  /* ⚡️ 1. SHOW LIGHTNING SOURCE ⚡️ */
+  .electric-border .eb-stroke {
+    /* Hide the static CSS border so the JS-applied SVG filter takes over */
+    border: none !important; 
+    opacity: 1; 
+    visibility: visible;
+    transition: opacity 0.3s;
+  }
+  
+  /* ⚡️ 2. SUBTLE GLOW ⚡️ */
+  .eb-glow-1 {
+      opacity: 0.5;
+  }
+
+  .eb-glow-2 {
+      opacity: 0.3;
+  }
+}

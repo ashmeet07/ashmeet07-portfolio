@@ -1,0 +1,270 @@
+{
+  "profile": {
+    "githubUsername": "ashmeet07",
+    "profileImageUrl": "http://localhost:3000/_next/image?url=%2Fippo.jpeg&w=640&q=75",
+    "introduction": "I'm a passionate python developer with a strong background in **Development(DevOps)** and software engineering. I love building scalable web applications and exploring new technologies."
+  },
+  "external": {
+    "heatmapUrlTemplate": "https://github-readme-activity-graph.vercel.app/graph?username={GITHUB_USERNAME}&theme=react&hide_border=true&area=true&custom_title="
+  },
+  "socialLinks": {
+    "twitter": "https://x.com/ashmeet07",
+    "github": "https://github.com/ashmeet07"
+  },
+  "skills": {
+    "techLogos": [
+      {
+        "name": "AWS EC2",
+        "icon": "AWS EC2"
+      },
+      {
+        "name": "AWS",
+        "icon": "AWS"
+      },
+      {
+        "name": "Django",
+        "icon": "Django"
+      },
+      {
+        "name": "Docker",
+        "icon": "Docker"
+      },
+      {
+        "name": "FastAPI",
+        "icon": "FastAPI"
+      },
+      {
+        "name": "MongoDB",
+        "icon": "MongoDB"
+      },
+      {
+        "name": "Git",
+        "icon": "Git"
+      },
+      {
+        "name": "Kaggle",
+        "icon": "Kaggle"
+      },
+      {
+        "name": "Podman",
+        "icon": "Podman"
+      },
+      {
+        "name": "Linux",
+        "icon": "Linux Tux"
+      },
+      {
+        "name": "Zapier",
+        "icon": "Zapier"
+      },
+      {
+        "name": "Spring",
+        "icon": "Spring"
+      },
+      {
+        "name": "Postman",
+        "icon": "Postman"
+      }
+    ],
+    "imageLogos": [
+      {
+        "src": "/logos/company1.png",
+        "alt": "Company 1",
+        "href": "https://company1.com"
+      },
+      {
+        "src": "/logos/company2.png",
+        "alt": "Company 2",
+        "href": "https://company2.com"
+      },
+      {
+        "src": "/logos/company3.png",
+        "alt": "Company 3",
+        "href": "https://company3.com"
+      }
+    ]
+  },
+  "mockData": {
+    "totalContributions": "1,250",
+    "workedToday": "3 hours, 15 min"
+  },
+  "timelineItems": [
+  {
+    "type": "experience",
+    "company": "Logistiex",
+    "position": "Software Engineer Intern",
+    "date": "Oct 2025 - Present",
+    "location": "Remote / Delhi, India",
+    "description": "Developing FastAPI-based RESTful APIs and production-ready services to enable product integrations with LLMs and third-party platforms.\nDesigned and implemented secure integration patterns for generative-AI workflows, including notebooks → API conversions and model orchestration.\nBuilt and maintained webhook/connectors for messaging integrations (WhatsApp) and implemented restrictive access controls to protect sensitive operations.\nTesting services and deployed prototypes to Cloud Run; collaborated with cross-functional product teams to ship end-to-end features.",
+    "technologies": {
+      "workingOn": [
+        "FastAPI",
+        "Python",
+        "Gen-AI",
+        "Cloud Run",
+        "Docker",
+        "Google Cloud"
+      ]
+    },
+    "icon": "https://media.licdn.com/dms/image/v2/C4D0BAQH3bbqytgjD-Q/company-logo_200_200/company-logo_200_200/0/1630524426845/logistiex_logo?e=2147483647&v=beta&t=tlQry8Tgy3BUwVAMydmrDbGI3lCoxZH9tdqdhj7k94Y",
+    "color": "text-blue-500",
+    "socialUrl": null
+  },
+  {
+    "type": "experience",
+    "company": "Tech Analogy",
+    "position": "MRA Intern",
+    "date": "Jan 2023 - Mar 2023",
+    "location": "Remote / Ahmedabad, Gujarat",
+    "description": "Conducted market research and SWOT analysis focused on higher education in Tamil Nadu  identified and profiled 400+ engineering colleges for strategic reporting.\nBuilt ETL pipelines to collect data from public sources using the requests library and BeautifulSoup for HTML parsing and validation.\nDesigned and delivered interactive Tableau dashboards and Excel-based reports to visualize findings and support data-driven decisions.",
+    "technologies": {
+      "workedOn": [
+        "Python",
+        "requests",
+        "BeautifulSoup",
+        "Tableau",
+        "Excel"
+      ]
+    },
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpX9hU3Yb64hBvQ5mVMOW3QM97sbnv5v093UDdCY3ux1D7powjI3a5jke0edPB0uhiOys&usqp=CAU",
+    "color": "text-green-500",
+    "socialUrl": "https://shopify.com"
+  },
+  {
+    "type": "experience",
+    "company": "Nettv4u",
+    "position": "Data Researcher Intern",
+    "date": "Sep 2022 - Oct 2022",
+    "location": "Remote / Chennai, India",
+    "description": "Performed library and web research to collect and validate television serial metadata for Nettv4u's catalog.\nAutomated Wikipedia scraping workflows and consolidated results into Excel data sources validated serial details against Nettv4u pages to ensure accuracy.\nDeveloped internal data validation routines and documentation to improve the reliability of the content ingestion pipeline.",
+    "technologies": {
+      "workedOn": [
+        "Python",
+        "WikiPedia",
+        "Excel"
+      ]
+    },
+    "icon": "https://media.glassdoor.com/sqll/1819984/nettv4u-squarelogo-1533211136312.png",
+    "color": "text-gray-700",
+    "socialUrl": "https://nettv4u.com"
+  },
+    {
+      "type": "education",
+      "institution": "DAVV University",
+      "degree": "Master's of Computer Applications",
+      "date": "2024-2026",
+      "location": "Indore",
+      "description": "Intensive coding bootcamp focused on full-stack development and startup skills.",
+      "icon": "🎓"
+    },
+    {
+      "type": "education",
+      "institution": "Medi-Caps University",
+      "degree": "Bachelor's of Computer Applications",
+      "date": "2021-2024",
+      "location": "Indore",
+      "description": "Comprehensive computer science education with focus on software engineering and algorithms.",
+      "icon": "🏗"
+    }
+  ],
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name_and_title": "Ashmeet Singh — A Python Devloper.",
+    "description": "I build robust, high-performance APIs and intelligent agents using Python and FastAPI and managing CI/CD pipelines for seamless delivery. Passionate about SaaS, driven by a keen eye for building product.",
+    "technologies": [
+      {
+        "name": "Python",
+        "icon_name": "Python"
+      },
+      {
+        "name": "FastAPI",
+        "icon_name": "FastAPI"
+      },
+      {
+        "name": "Next.js",
+        "icon_name": "Next.js"
+      },
+      {
+        "name": "PostgreSQL",
+        "icon_name": "PostgreSQL"
+      }
+    ],
+    "image_card": {
+      "src": "/ashmeetprofile.png",
+      "alt": "Ashmeet Singh's Profile photo",
+      "height": 250,
+      "width": 250,
+      "electric_border": {
+        "color": "#7df9ff",
+        "speed": 1,
+        "chaos": 0.5,
+        "thickness": 2
+      }
+    },
+    "call_to_actions": [
+      {
+        "label": "CV",
+        "icon_name": "Download",
+        "href": "https://drive.google.com/file/d/1YhRMnjpCZG2uGOV4mFihFwIzLv1ccFFt/view"
+      },
+      {
+        "label": "Community",
+        "icon_name": "RocketIcon",
+        "href": "https://techquanta.tech"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": 1,
+      "title": "ApplicantAce",
+      "description": "A SaaS to collect email addresses from your GPT users via the OpenAI GPT Store. Great for building an audience and monetizing API usage [Resume Builder].",
+      "image": "/projects/applicantace.png",
+      "liveUrl": "https://aceresume.techquanta.tech",
+      "githubUrl": "#",
+      "technologies": [
+        "AWS",
+        "Java",
+        "Express",
+        "PostgreSQL",
+        "MongoDB",
+        "Gen-AI"
+      ],
+      "status": "Operational",
+      "detailsUrl": "#"
+    },
+    {
+      "id": 2,
+      "title": "TechQuanta",
+      "description": "Designed, developed and sold animated UI(ReactBits) components for developers, focusing on modern web aesthetics and performance [Community Website].",
+      "image": "/projects/techquanta.png",
+      "liveUrl": "https://techquanta.tech",
+      "githubUrl": "#",
+      "technologies": ["React"],
+      "status": "Operational",
+      "detailsUrl": "#"
+    },
+    {
+      "id": 3,
+      "title": "AirPlay-OS",
+      "description": "An application which provide simplicity buy voice assistnat using GEN-AI by providing services as per the userScale under development expected to complete Jan 2026",
+      "image": "/projects/airplayos.gif",
+      "liveUrl": "#",
+      "githubUrl": "https://github.com/TechQuanta/airplay-os",
+      "technologies": ["Flutter", "Python"],
+      "status": "Under Development",
+      "detailsUrl": "#"
+    },
+     {
+      "id": 3,
+      "title": "GitHub-Avatar-Frames",
+      "description": "Help you to make your github profile attractive by creating github avatar and do have cli to use with npx to configure and add your custom avatar with multiple frame configuration to make your visibility [Hosted on GSSoC 2025].",
+      "image": "/projects/gitavatarapi.png",
+      "liveUrl": "https://frame-avatars.vercel.app/",
+      "githubUrl": "https://github.com/TechQuanta/airplay-os",
+      "technologies": ["React", "TypeScript"],
+      "status": "Operational",
+      "detailsUrl": "#"
+    }
+  ]
+}
