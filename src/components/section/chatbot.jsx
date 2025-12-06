@@ -15,7 +15,7 @@ import remarkGfm from "remark-gfm";
 const ASHMEET_CHAT_API_URL = `https://chat-with-me-seven-sandy.vercel.app/api/chat`;
 const ASHMEET_ASSISTANT_IMAGE_URL = "/ashmeetprofile.png";
 const ASHMEET_USER_IMAGE_URL = "https://placehold.co/40x40/60a5fa/ffffff?text=U";
-const ASHMEET_ASSISTANT_NAME = "Ashmeet personal assistant";
+const ASHMEET_ASSISTANT_NAME = "Singh AI";
 const ASHMEET_MAX_INPUT_WORDS = 500;
 const TYPING_INDICATOR_MESSAGE_ID = "typing-indicator"; // Fixed ID for typing indicator
 const ANIMATION_INTERVAL = 5000; // 5 seconds for SplitText re-animation
@@ -65,12 +65,12 @@ const AshmeetChatMessage = React.memo(({
   const timestamp = message?.timestamp;
 
   // --- STYLING FOR CHAT BUBBLES ---
-  const botAvatarClasses = "w-full h-full rounded-full overflow-hidden border-2 border-white dark:border-gray-700 ";
+  const botAvatarClasses = "w-full h-full rounded-full overflow-hidden  ";
   // 💡 ADDED SHADOW-LG FOR MAGNIFICENT EFFECT
-  const botBubbleClasses = "bg-gray-100 text-gray-800 dark:bg-black dark:text-gray-100 p-1 pl-10 rounded-xl rounded-tl-[50px] shadow-lg text-sm";
-  const userAvatarClasses = "w-full h-full rounded-full overflow-hidden border-2 border-white dark:border-gray-700 ";
+  const botBubbleClasses = "bg-gray-100 text-gray-800 dark:bg-[#5D4B4B] dark:text-gray-100 p-1 pl-10 rounded-xl rounded-tl-[50px] shadow-lg text-sm";
+  const userAvatarClasses = "w-full h-full rounded-full overflow-hidden ";
   // 💡 ADDED SHADOW-LG FOR MAGNIFICENT EFFECT
-  const userBubbleClasses = "bg-blue-600 text-white p-2 pr-10 rounded-xl rounded-tr-[50px] shadow-lg";
+  const userBubbleClasses = "bg-white text-black p-2 pr-10 rounded-xl rounded-tr-[50px] shadow-lg";
 
   const AvatarWrapper = ({ imageUrl, name, isBot, isOnline }) => (
     <div
@@ -96,9 +96,9 @@ const AshmeetChatMessage = React.memo(({
           className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full ring-2 ${
             isBot
               ? isOnline
-                ? "bg-green-500 ring-white dark:ring-gray-700"
-                : "bg-red-500 ring-white dark:ring-gray-700"
-              : "bg-yellow-400 ring-blue-600"
+                ? "bg-green-500 ring-white"
+                : "bg-red-500 ring-white"
+              : "bg-green-400 "
           }`}
           title={isBot ? (isOnline ? "Online" : "Offline") : "Active"}
         />
@@ -481,57 +481,11 @@ const AshmeetChatInterface = ({ onClose, isDarkMode }) => {
 
   return (
     <>
-      <style jsx global>{`
-        /* WOW Send Button Styling */
-        .ashmeet-wow-send-button {
-          background-image: linear-gradient(145deg, #6366f1, #a855f7);
-          color: white;
-          transition: all 0.2s ease-in-out;
-        }
-        .ashmeet-wow-send-button:hover:not(:disabled) {
-          background-image: linear-gradient(145deg, #4f46e5, #9333ea);
-          transform: scale(1.05);
-        }
-        .ashmeet-wow-send-button:disabled {
-          background-image: linear-gradient(145deg, #9ca3af, #d1d5db);
-          color: #4b5563;
-          box-shadow: none;
-        }
-        .dark .ashmeet-wow-send-button {
-          background-image: linear-gradient(145deg, #7c3aed, #a855f7);
-        }
-        .dark .ashmeet-wow-send-button:hover:not(:disabled) {
-          background-image: linear-gradient(145deg, #6d28d9, #9333ea);
-        }
-        
-        /* Custom Scrollbar for Chat Area (Prevents scrollbar lag/jump) */
-        .injected-scrollbar {
-            /* For Firefox */
-            scrollbar-width: thin;
-            scrollbar-color: #9ca3af #f3f4f6;
-        }
-        .injected-scrollbar::-webkit-scrollbar {
-            width: 8px;
-        }
-        .injected-scrollbar::-webkit-scrollbar-track {
-            background: ${isDarkMode ? '#000' : '#f3f4f6'}; /* Match background */
-        }
-        .injected-scrollbar::-webkit-scrollbar-thumb {
-            background-color: ${isDarkMode ? '#4b5563' : '#9ca3af'}; /* Darker in dark mode */
-            border-radius: 20px;
-            border: 2px solid ${isDarkMode ? '#000' : '#f3f4f6'};
-        }
-        
-        /* 💡 MOBILE BOTTOM CLEARANCE FIX: For safe area padding on iOS/modern mobiles */
-        .pb-safe-or-4 {
-          padding-bottom: max(1rem, env(safe-area-inset-bottom)); /* Use 1rem (p-4) or safe area, whichever is larger */
-        }
-      `}</style>
 
       {/* 💡 Added pb-4 for mobile bottom clearance */}
       <div className="flex flex-col h-full antialiased pb-4 md:pb-0"> 
         {/* HEADER */}
-        <header className="sticky top-0 z-50 flex items-center justify-between py-4 px-3 bg-white/70 dark:bg-black/80 backdrop-blur-md transition duration-300 ">
+        <header className="sticky top-0 z-50 flex items-center justify-between py-4 px-3 bg-white/70 dark:bg-[#3D4B4B]/80 backdrop-blur-md transition duration-300 ">
           <div className="flex items-center space-x-2 pl-1">
             <div className="relative">
               <img
@@ -628,7 +582,7 @@ const AshmeetChatInterface = ({ onClose, isDarkMode }) => {
                         />
                       </div>
                       <div
-                        className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-green-500 ring-2 ring-white dark:ring-gray-700`}
+                        className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-green-500 `}
                         title="Online"
                       />
                     </div>
@@ -648,11 +602,11 @@ const AshmeetChatInterface = ({ onClose, isDarkMode }) => {
         <form
           onSubmit={handleAshmeetSend}
     
-          className="sticky bottom-0 z-50 p-1 mx-3 bg-gray-100/0 dark:bg-black/0 backdrop-blur-none transition duration-300 pb-safe-or-4 md:pb-1"
+          className="sticky bottom-0 z-50 p-1 mx-3 bg-gray-100/0 dark:bg-[#4D4B4B]/40 rounded-t-md  backdrop-blur-none transition duration-300 pb-safe-or-4 mb-20 md:mb-0 md:pb-1"
         >
           {/* Input Container */}
           <div
-            className={`relative flex items-center border-t-2 border-l-2 border-r-2 space-x-2 bg-white dark:bg-black p-1 rounded-xl shadow-lg ${
+            className={`relative flex items-center border-t-2 border-l-2 border-r-2 space-x-2 bg-white dark:bg-white/40 p-1 rounded-xl shadow-lg ${
               isInputTooLong ? "border-2 border-red-500" : "border-gray-200 dark:border-gray-800"
             }`}
           >
@@ -691,7 +645,7 @@ const AshmeetChatInterface = ({ onClose, isDarkMode }) => {
             </button>
           </div>
           {/* Word Count Indicator */}
-          <div className="absolute -bottom-6 right-1 text-xs text-gray-500 dark:text-gray-400">
+          <div className="absolute  right-1 text-xs text-gray-500 dark:text-gray-400">
             {wordCount}/{ASHMEET_MAX_INPUT_WORDS} words
             {isInputTooLong && <span className="ml-1 text-red-500">(Max Limit Reached)</span>}
           </div>
@@ -764,7 +718,7 @@ export default function AshmeetChatbotWidget() {
 
       return `
         fixed z-[99] transition-all duration-500 ease-in-out
-        bg-white/90 dark:bg-black backdrop-blur-xl flex flex-col overflow-hidden
+        bg-white/90 dark:bg-[#3D4B4B]  backdrop-blur-xl flex flex-col overflow-hidden
         ${isVisible}
         inset-0 w-full h-screen rounded-none
         ${mobileSlide}
@@ -783,7 +737,7 @@ export default function AshmeetChatbotWidget() {
       return `
         fixed z-50 flex md:hidden right-0 top-1/2 transform -translate-y-1/2 
         p-2 rounded-l-xl flex-col items-center justify-center space-y-1 text-sm
-        bg-transparent text-black dark:text-white transition-all duration-500 ease-in-out 
+        bg-[#525151] dark:bg-transparent  text-black dark:text-white transition-all duration-500 ease-in-out 
         hover:scale-[1.03] shadow-lg
         ${isVisible}
       `;
@@ -795,8 +749,8 @@ export default function AshmeetChatbotWidget() {
         : "translate-y-0 opacity-100 cursor-pointer";
 
       return `
-        fixed z-50 hidden md:flex items-center bottom-0 right-4 px-6 py-3 rounded-t-lg 
-        bg-transparent text-black dark:text-white shadow-lg transition-all duration-500 ease-in-out 
+        fixed z-50 hidden md:flex items-center bottom-0 right-4 px-4 py-2 rounded-t-lg
+        bg-[#525151] dark:bg-transparent text-black dark:text-white shadow-lg transition-all duration-500 ease-in-out 
         hover:scale-[1.03]
         ${isVisible}
       `;
@@ -809,7 +763,7 @@ export default function AshmeetChatbotWidget() {
 
   return (
     <div
-      className={`bg-white dark:bg-black transition-colors duration-500 font-inter ${
+      className={`bg-white dark:bg-[#4D4B4B] transition-colors duration-500 font-inter ${
         isOpen ? "overflow-hidden" : ""
       }`}
     >
@@ -823,7 +777,7 @@ export default function AshmeetChatbotWidget() {
         className={mobileTriggerClasses}
         title="Open Chatbot"
       >
-        <MessageSquare className="w-5 h-5" />
+        
         <ShinyText
           text={
             <span className="font-semibold whitespace-nowrap [writing-mode:vertical-rl] rotate-180">
@@ -833,6 +787,7 @@ export default function AshmeetChatbotWidget() {
           speed={5}
           className="text-white"
         />
+        <MessageSquare className="w-5 h-5 text-white rotate-270" />
       </button>
 
       {/* Desktop/Tablet Trigger Button */}
@@ -841,10 +796,10 @@ export default function AshmeetChatbotWidget() {
         className={desktopTriggerClasses}
         title="Open Chatbot"
       >
-        <MessageSquare className="w-5 h-5 mr-2" />
+        <MessageSquare className="w-5 h-5 mr-2 text-white" />
         <ShinyText
           text={
-            <span className="text-base font-semibold whitespace-nowrap">
+            <span className="text-base font-semibold whitespace-nowrap ">
               Let's Chat
             </span>
           }

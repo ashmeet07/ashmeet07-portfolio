@@ -122,7 +122,7 @@ export function Navbar() {
       <Dock
         direction="middle"
         className="
-          bg-gray-200/40 dark:bg-black
+          bg-gray-200/40 dark:bg-[#2b2b2bff]/40
           backdrop-blur-md border border-gray-400/20 dark:border-gray-700/30
           rounded-2xl px-3 py-2 
           flex gap-2 

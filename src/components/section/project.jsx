@@ -1,23 +1,21 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 // Import motion components for animation
-import { motion } from "framer-motion"; 
+import { motion, AnimatePresence } from "framer-motion"; 
 import { useInView } from "react-intersection-observer"; 
 
 // Using a placeholder for Link. In a real project, this would be 'next/link' or 'react-router-dom/Link'.
 const Link = ({ to, children, className }) => <a href={to} className={className}>{children}</a>; 
 
-import { Dot, Github, Link as LinkIcon, ChevronRight } from 'lucide-react'; 
-import Image from "next/image";
+import { Dot, Github, Link as LinkIcon, ChevronRight, X } from 'lucide-react'; 
+import Image from "next/image"; // Next.js Image component
 
 // 1. IMPORT DATA
 import { projects } from '@/lib/data.json'; 
 const projectsData = projects
 
 // --- ICON MAP IMPORT ---
-// Ensure this path is correct for your project structure
 import { TechIconMap } from '@/lib/imagepath.js'; 
-
 
 // --------------------------------------------------------
 // --- GENERIC ICON COMPONENT ---
@@ -71,7 +69,101 @@ const StatusBadge = ({ status }) => {
 // --- End Status Badge ---
 
 
+// --------------------------------------------------------
+// --- Image/Video Modal Component (Lightbox) ---
+// --------------------------------------------------------
+const ImageModal = ({ src, alt, onClose }) => {
+    if (!src) return null;
+
+    const isVideo = src.endsWith('.mp4');
+
+    // Handle keyboard escape press
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                onClose();
+            }
+        };
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [onClose]);
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+        >
+            {/* Background Overlay with Blur */}
+            <div
+                className="absolute inset-0 bg-black/80 backdrop-blur-lg cursor-pointer"
+                onClick={onClose}
+                aria-label="Close modal"
+            />
+            
+            {/* Modal Content */}
+            <motion.div
+                initial={{ scale: 0.8, y: 50 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.8, y: 50 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                // ⭐ CHANGE: Reduced max-w and removed bg-white/dark:bg-[#1f1f1f] for less visual obstruction
+                className="relative max-w-5xl w-full max-h-[95vh] rounded-lg shadow-2xl overflow-hidden" 
+            >
+                {/* Close Button */}
+                <button
+                    onClick={onClose}
+                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                    aria-label="Close"
+                >
+                    <X className="w-6 h-6" />
+                </button>
+
+                {/* Media Content */}
+                {/* ⭐ CHANGE: Removed "p-4" from the container to maximize space */}
+                <div className="w-full h-full flex items-center justify-center  dark:bg-[#1f1f1f] rounded-lg">
+                    {isVideo ? (
+                        <video
+                            src={src}
+                            title={alt}
+                            // ⭐ CHANGE: Maximize dimensions for clarity
+                            className="object-contain w-full h-full max-h-[90vh] rounded-md"
+                            autoPlay
+                            loop
+                            muted={false} 
+                            controls 
+                            playsInline
+                        />
+                    ) : (
+                        <Image
+                            src={src}
+                            alt={alt}
+                            width={1600} // Increase max width
+                            height={900} // Increase max height
+                            // ⭐ CHANGE: Maximize dimensions for clarity
+                            className="object-contain max-w-full max-h-[90vh] rounded-md" 
+                        />
+                    )}
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+};
+
+
+// --------------------------------------------------------
+// --- Projects Component (State for Modal) ---
+// --------------------------------------------------------
 export default function Projects({ limit }) {
+    const [modalData, setModalData] = useState({ isOpen: false, src: '', alt: '' });
+    
+    const openModal = (src, alt) => setModalData({ isOpen: true, src, alt });
+    const closeModal = () => setModalData({ isOpen: false, src: '', alt: '' });
+
     const allProjects = projectsData; 
     const visibleProjects = limit ? allProjects.slice(0, limit) : allProjects;
     const gridClasses = "grid-cols-1 md:grid-cols-2"; 
@@ -87,7 +179,7 @@ export default function Projects({ limit }) {
             
             <div className={`grid gap-4 ${gridClasses}`}>
                 {visibleProjects.map((project) => (
-                    <ProjectCard key={project.id} project={project} />
+                    <ProjectCard key={project.id} project={project} onMediaClick={openModal} />
                 ))}
             </div>
 
@@ -96,28 +188,73 @@ export default function Projects({ limit }) {
                 <div className="flex justify-center mt-8">
                     <Link
                         to="/projects"
-                        // ✅ FIX 3: Consolidated multi-line className for Link component
-                        className="px-6 py-3 rounded-md font-semibold text-sm sm:text-base bg-gray-200/30 dark:bg-gray-800/30 text-gray-900 dark:text-gray-100 hover:bg-gray-300/40 dark:hover:bg-gray-700/40 backdrop-blur-md transition-all duration-300 shadow-inner text-shadow-md "
+                        className="px-6 py-3 rounded-md font-semibold text-sm sm:text-base bg-gray-200/30 dark:bg-gray-800/30 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-100 dark:hover:text-white backdrop-blur-md transition-all duration-300 shadow-inner text-shadow-lg "
                     >
                         View All Projects
                     </Link>
                 </div>
             )}
+            
+            {/* RENDER THE MODAL */}
+            <AnimatePresence>
+                {modalData.isOpen && (
+                    <ImageModal 
+                        src={modalData.src} 
+                        alt={modalData.alt} 
+                        onClose={closeModal} 
+                    />
+                )}
+            </AnimatePresence>
+
         </section>
     );
 }
 
-// --- ProjectCard Component with Scroll Animation ---
-const ProjectCard = ({ project }) => {
-    // Reruns animation every time the card enters the viewport
+// --------------------------------------------------------
+// --- ProjectCard Component ---
+// --------------------------------------------------------
+const ProjectCard = ({ project, onMediaClick }) => { 
     const [ref, inView] = useInView({
         triggerOnce: false, 
         threshold: 0.1, 
     });
 
-    // subtle elevation and shadow config
     const hoverTransform = { y: -8, scale: 1.01 };
     const initialTransform = { y: 0, scale: 1 };
+    
+    const isVideo = project.image && project.image.endsWith('.mp4');
+
+    const handleMediaClick = () => {
+        onMediaClick(project.image, project.title);
+    };
+
+    // Helper component for Media rendering (Image or Video)
+    const ProjectMedia = () => {
+        if (isVideo) {
+            return (
+                <video
+                    src={project.image}
+                    title={project.title}
+                    className="object-cover max-w-[85%] max-h-[90%] w-auto h-auto rounded-t-sm"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                />
+            );
+        }
+        
+        // Use Next.js Image for non-video sources
+        return (
+            <Image
+                src={project.image}
+                alt={project.title}
+                width={600} 
+                height={300}
+                className="object-cover max-w-[85%] max-h-[90%] w-auto h-auto rounded-t-sm" 
+            />
+        );
+    };
 
     return (
         <div className="relative">
@@ -141,11 +278,9 @@ const ProjectCard = ({ project }) => {
             >
                 {/* card */}
                 <div
-                    // ✅ KEEP the exact cutout shape classes
                     className={`overflow-hidden bg-white dark:bg-[#1f1f1f] rounded-tl-[100px] rounded-br-[100px]  flex flex-col`}
-                    // premium layered shadows using Tailwind arbitrary shadows
                     style={{
-                        boxShadow: `0 1px 2px rgba(2,6,23,0.18), 0 30px 60px rgba(2,6,23,0.12), inset 0 2px 8px rgba(255,255,255,0.02)`,
+                        boxShadow: `0 1px 2px rgba(2,6,23,0.18), 0 5px 0px rgba(92, 92, 92, 1), inset 0 2px 8px rgba(255,255,255,0.02)`,
                     }}
                 >
                     {/* subtle inner border accent */}
@@ -153,24 +288,20 @@ const ProjectCard = ({ project }) => {
                         boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03), inset 0 -1px 0 rgba(0,0,0,0.03)'
                     }} />
 
-                    {/* Project Image Container */}
+                    {/* Project Image/Video Container */}
                     <div 
-                        className="aspect-video overflow-hidden p-4 relative bg-gradient-to-br from-white to-blue-200 dark:from-black dark:via-black dark:to-indigo-200 dark:backdrop-blur-lg"
+                        className="aspect-video overflow-hidden p-4 relative bg-transparent dark:backdrop-blur-lg"
+                        onClick={handleMediaClick}
+                        style={{ cursor: 'pointer' }}
                     >
-                        {/* Image Wrapper for Bottom Alignment and Animation */}
+                        {/* Image/Video Wrapper for Bottom Alignment and Animation */}
                         <motion.div
                             initial={{ y: 50, opacity: 0 }} 
                             animate={inView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }} 
                             transition={{ duration: 0.5, ease: "easeOut" }} 
                             className="w-full h-full absolute bottom-0 left-0 flex items-end justify-center" 
                         >
-                            <Image
-                                src={project.image}
-                                alt={project.title}
-                                width={600}
-                                height={300}
-                                className="object-cover max-w-[85%] max-h-[90%] w-auto h-auto rounded-t-sm" 
-                            />
+                            <ProjectMedia />
                         </motion.div>
                     </div>
 
@@ -222,7 +353,7 @@ const ProjectCard = ({ project }) => {
                                         <div 
                                             key={tech}
                                             title={tech}
-                                            className="p-1 rounded bg-white/5 dark:bg-white/3"
+                                            className="p-1 rounded bg-transparent"
                                         >
                                             <ProjectTechnologyIcon name={tech} className="w-5 h-5 opacity-90" />
                                         </div>

@@ -10,6 +10,8 @@ export const TechIconMap = {
     
     // --- Working On (Current) ---
     'Python': '/assets/Python.svg',
+    'CSS': '/assets/CSS3.svg',
+    'HTML': '/assets/HTML5.svg',
     'FastAPI': '/assets/FastAPI.svg',
     'Gen-AI': '/assets/GenAi.webp', 
     "AWS": '/assets/AWS.svg', // Main AWS icon
@@ -50,7 +52,7 @@ export const TechIconMap = {
     'Java': '/assets/Java.svg', // Using one Java variant
     'JavaScript': '/assets/JavaScript.svg',
     'Django REST Framework': '/assets/Django REST.svg',
-    'Django Icon': '/assets/django-icon.svg',
+    'Django': '/assets/django-icon.svg',
     'Django Main': '/assets/Django.svg',
     'Flutter': '/assets/Flutter.svg',
     'Spring': '/assets/spring-icon.svg',

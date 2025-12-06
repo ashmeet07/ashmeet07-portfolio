@@ -89,11 +89,10 @@ const NavigationButton = ({ currentView, setView }) => {
   return (
     <button
       onClick={() => setView(targetView)}
-      className={classes}
+       className="px-6 py-3 rounded-md font-semibold text-sm sm:text-base bg-gray-200/30 dark:bg-gray-800/30 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-white backdrop-blur-md transition-all duration-300 shadow-inner text-shadow-lg "
       aria-label={`Switch to ${targetView} view`}
     >
-      <Icon className="w-4 h-4 mr-2" />
-      {label}
+      <Icon  />
     </button>
   );
 };

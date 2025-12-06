@@ -9,6 +9,10 @@ const nextConfig = {
         hostname: 'github-readme-activity-graph.vercel.app',
       },
     ],
+    domains: [
+        'i.imgur.com', 
+        // Add any other external image hosts you use here
+    ],
   },
 };
 

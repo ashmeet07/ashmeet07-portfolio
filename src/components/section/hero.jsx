@@ -129,12 +129,7 @@ export default function Hero() {
       </h1>
       {/* Name and Title */}
       <h1 className="text-xl mb-10 sm:text-2xl lg:text-3xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
-        <ShinyText
-          text={name_and_title}
-          disabled={false}
-          speed={3}
-          className="custom-class"
-        />
+       {name_and_title}
       </h1>
 
       <div className="flex flex-col-reverse md:flex-col lg:flex-row items-center lg:items-stretch justify-between gap-10 lg:gap-16">

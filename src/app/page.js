@@ -26,6 +26,7 @@ const LazyBookACall = dynamic(() => import('@/components/section/bookmeet'));
 
 // Chatbox is a non-critical overlay/widget
 const LazyChatbox = dynamic(() => import('@/components/section/chatbot'));
+const LazyQuote = dynamic(() => import('@/components/section/Quote'));
 
 
 // --- 3. PAGE CONTENT COMPONENT (Uses the lazy loaded components) ---
@@ -40,6 +41,7 @@ const HomePageContent = () => (
         <LazyAbout />
         <LazyTimeline/>
         <LazyBookACall/>
+        <LazyQuote/>
     </>
 );
 
@@ -48,7 +50,7 @@ const HomePageContent = () => (
 export default function Home() {
     return (
         // The surrounding structure is kept, but the components are now dynamic imports
-        <div className="min-h-screen bg-white dark:bg-black transition-colors duration-1000">
+        <div className="min-h-screen bg-white dark:bg-[#232323ff] transition-colors duration-1000">
             {/* Navbar is critical and remains a direct import */}
             <Navbar /> 
             

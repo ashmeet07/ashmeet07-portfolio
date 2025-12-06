@@ -1,4 +1,4 @@
-  // src/app/projects/page.js
+// src/app/projects/page.js
 'use client';
 
 import React from 'react';
@@ -24,12 +24,15 @@ export default function ProjectsPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
-              <Link href="/" legacyBehavior>
-                <a className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-sm font-medium bg-gray-100/40 dark:bg-gray-900/30 hover:opacity-95 transition hover:underline">
-                  <ChevronLeft className="w-4 h-4" />
-                  Back
-                </a>
+              {/* This Link component is correctly updated for Next.js 13+ */}
+              <Link 
+                href="/" 
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-sm font-medium bg-gray-100/40 dark:bg-gray-900/30 hover:opacity-95 transition hover:underline"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                Back
               </Link>
+              {/* --- END FIX --- */}
 
             </div>
 

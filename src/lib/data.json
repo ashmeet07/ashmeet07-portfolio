@@ -2,7 +2,7 @@
   "profile": {
     "githubUsername": "ashmeet07",
     "profileImageUrl": "http://localhost:3000/_next/image?url=%2Fippo.jpeg&w=640&q=75",
-    "introduction": "I'm a passionate python developer with a strong background in **Development(DevOps)** and software engineering. I love building scalable web applications and exploring new technologies."
+    "introduction": "I'm a passionate python developer with a strong background in **Development `(DevOps)`** and software engineering. I love building scalable web applications and exploring new technologies."
   },
   "external": {
     "heatmapUrlTemplate": "https://github-readme-activity-graph.vercel.app/graph?username={GITHUB_USERNAME}&theme=react&hide_border=true&area=true&custom_title="
@@ -93,7 +93,7 @@
     "type": "experience",
     "company": "Logistiex",
     "position": "Software Engineer Intern",
-    "date": "Oct 2025 - Present",
+    "date": "Oct 2025 - Dec 2025",
     "location": "Remote / Delhi, India",
     "description": "Developing FastAPI-based RESTful APIs and production-ready services to enable product integrations with LLMs and third-party platforms.\nDesigned and implemented secure integration patterns for generative-AI workflows, including notebooks → API conversions and model orchestration.\nBuilt and maintained webhook/connectors for messaging integrations (WhatsApp) and implemented restrictive access controls to protect sensitive operations.\nTesting services and deployed prototypes to Cloud Run; collaborated with cross-functional product teams to ship end-to-end features.",
     "technologies": {
@@ -153,8 +153,8 @@
       "institution": "DAVV University",
       "degree": "Master's of Computer Applications",
       "date": "2024-2026",
-      "location": "Indore",
-      "description": "Intensive coding bootcamp focused on full-stack development and startup skills.",
+      "location": "On-Site / Indore",
+      "description": "Studied advanced concepts along with project management skills to sustain the projects in real-world scenarios.",
       "icon": "🎓"
     },
     {
@@ -162,8 +162,8 @@
       "institution": "Medi-Caps University",
       "degree": "Bachelor's of Computer Applications",
       "date": "2021-2024",
-      "location": "Indore",
-      "description": "Comprehensive computer science education with focus on software engineering and algorithms.",
+      "location": "On-Site / Indore",
+      "description": "Comprehensive study of computer applications, programming languages, and software development methodologies.",
       "icon": "🏗"
     }
   ],
@@ -205,7 +205,7 @@
       {
         "label": "CV",
         "icon_name": "Download",
-        "href": "https://drive.google.com/file/d/1YhRMnjpCZG2uGOV4mFihFwIzLv1ccFFt/view"
+        "href": "https://drive.google.com/file/d/19hd4AcqiAcOmNY0n2Q6r5E5ZlL0Amn8N/view?usp=sharing"
       },
       {
         "label": "Community",
@@ -256,13 +256,24 @@
       "detailsUrl": "#"
     },
      {
-      "id": 3,
+      "id": 4,
       "title": "GitHub-Avatar-Frames",
       "description": "Help you to make your github profile attractive by creating github avatar and do have cli to use with npx to configure and add your custom avatar with multiple frame configuration to make your visibility [Hosted on GSSoC 2025].",
       "image": "/projects/gitavatarapi.png",
       "liveUrl": "https://frame-avatars.vercel.app/",
-      "githubUrl": "https://github.com/TechQuanta/airplay-os",
+      "githubUrl": "https://github.com/TechQuanta/github-avatar-frame-api",
       "technologies": ["React", "TypeScript"],
+      "status": "Operational",
+      "detailsUrl": "#"
+    },
+    {
+      "id": 5,
+      "title": "Employee Task Management System",
+      "description": "Help you to make your organisation task organised with both side admin and employee task organisation with panels along with stuitable with task analysis report generation along with completion reports with CRUD operations [First Year Project BCA]",
+      "image": "https://i.imgur.com/OjHlh0D.mp4",
+
+      "githubUrl": "https://github.com/TechQuanta/TaskManagementSystem",
+     "technologies": ["Python", "Django", "JavaScript", "HTML", "CSS"],
       "status": "Operational",
       "detailsUrl": "#"
     }

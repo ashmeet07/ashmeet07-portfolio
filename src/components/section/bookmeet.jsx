@@ -76,10 +76,10 @@ const QualifierModal = ({ isOpen, onClose, role, setRole, intent, setIntent, onC
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/40 transition-opacity backdrop-blur-sm duration-300 animate-fade-in ">
                     
                     {/* MODAL WINDOW: Increased shadow and border thickness for premium feel */}
-                    <div className="bg-white rounded-xl p-4 w-full max-w-sm border-1 border-black shadow-3xl transform scale-100 transition-all duration-300 hover:shadow-4xl "> 
+                    <div className="bg-white rounded-xl p-3 m-4 w-full max-w-sm shadow-3xl transform scale-100 transition-all duration-300 hover:shadow-4xl "> 
                         
                         {/* Header Section */}
-                        <div className="mb-6 flex justify-between items-start">
+                        <div className="mb-2 flex justify-between items-start">
                             <span>
                                 <h2 className="text-x font-semibold text-gray-900 tracking-tight mb-1">
                                     Tell me about yourself ?
@@ -90,7 +90,7 @@ const QualifierModal = ({ isOpen, onClose, role, setRole, intent, setIntent, onC
                                 type="button" 
                                 onClick={onClose} 
                                 // Added boxy shadow, changed to rounded-lg, and updated colors for theme adaptability
-                                className="text-gray-700 bg-gray-50 border border-gray-200 shadow-md hover:shadow-lg hover:bg-gray-200 hover:text-gray-900 rounded-lg p-1 transition duration-150"
+                                className="text-gray-100 bg-[#4D4B4B] border border-gray-300 hover:bg-gray-200 hover:text-gray-900 rounded-md  transition duration-150 hover:shadow-inner shadow-lg"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                             </button>
@@ -101,7 +101,7 @@ const QualifierModal = ({ isOpen, onClose, role, setRole, intent, setIntent, onC
                             
                             {/* Role Dropdown */}
                             <div className="relative">
-                                <label htmlFor="role-select" className="block text-xs font-bold text-gray-700 mb-1 uppercase tracking-widest">
+                                <label htmlFor="role-select" className="block text-xs font-bold text-gray-900 mb-1 uppercase tracking-widest">
                                     Your Role
                                 </label>
                                 <select
@@ -110,11 +110,11 @@ const QualifierModal = ({ isOpen, onClose, role, setRole, intent, setIntent, onC
                                     value={role}
                                     onChange={(e) => setRole(e.target.value)}
                                     // Refined focus ring and hover effect
-                                    className="block w-full text-xs py-1 px-4 bg-gray-50 border border-gray-300 text-gray-800 rounded-sm shadow-sm
-                                     focus:ring-2 focus:ring-gray-600 focus:border-gray-600 transition duration-150 appearance-none font-medium cursor-pointer outline-none hover:border-gray-400" 
+                                    className="block w-full text-xs py-1 px-4 bg-gray-50 text-gray-800 rounded-sm shadow-sm
+                                     focus:ring-2 focus:ring-gray-600 focus:border-gray-600 transition duration-150 appearance-none font-medium cursor-pointer outline-none " 
                                 >
                                     {roleOptions.map(option => (
-                                        <option key={option.value} value={option.value} className='bg-white text-gray-900'>
+                                        <option key={option.value} value={option.value} className='bg-white text-gray-900 font-semibold text-sm'>
                                             {option.label}
                                         </option>
                                     ))}
@@ -134,10 +134,10 @@ const QualifierModal = ({ isOpen, onClose, role, setRole, intent, setIntent, onC
                                     onChange={(e) => setIntent(e.target.value)}
                                     // Refined focus ring and hover effect
                                     className="block w-full text-xs py-1 px-4 pr-10 bg-gray-50 border border-gray-300 text-gray-800 rounded-sm shadow-sm
-                                     focus:ring-2 focus:ring-gray-600 focus:border-gray-600 transition duration-150 appearance-none font-medium cursor-pointer outline-none hover:border-gray-400" 
+                                     focus:ring-2 focus:ring-gray-600 focus:border-gray-600 transition duration-150 appearance-none font-medium cursor-pointer outline-none hover:border-gray-400 outline-none" 
                                 >
                                     {intentOptions.map(option => (
-                                        <option key={option.value} value={option.value} className='bg-white text-gray-900 rounded-none'>
+                                        <option key={option.value} value={option.value}  className='bg-white text-gray-900 font-semibold text-sm'>
                                             {option.label}
                                         </option>
                                     ))}
@@ -387,7 +387,7 @@ export default function BookingApp() {
 
     return (
         // Main wrapper
-        <div className="font-sans antialiased bg-transparent min-h-screen flex flex-col items-center justify-center">
+        <div className="font-sans antialiased bg-transparent min-h-[60vh] flex flex-col items-center justify-center">
             
             {/* Main Page Content */}
             <h1 className="text-2xl font-extrabold text-gray-300 dark:text-white mb-4 text-center leading-snug tracking-tight">
