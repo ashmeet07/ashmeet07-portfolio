@@ -2,7 +2,7 @@
   "profile": {
     "githubUsername": "ashmeet07",
     "profileImageUrl": "http://localhost:3000/_next/image?url=%2Fippo.jpeg&w=640&q=75",
-    "introduction": "I'm a passionate python developer with a strong background in **Development `(DevOps)`** and software engineering. I love building scalable web applications and exploring new technologies."
+    "introduction": "I love solving complex problems and turning ideas into real, working solutions. Creating systems that are fast, reliable, and meaningful excites me, and I enjoy building projects that leave an impact and push boundaries. Every challenge is an opportunity to learn, create, and make something that people can actually use."
   },
   "external": {
     "heatmapUrlTemplate": "https://github-readme-activity-graph.vercel.app/graph?username={GITHUB_USERNAME}&theme=react&hide_border=true&area=true&custom_title="
@@ -108,7 +108,7 @@
     },
     "icon": "https://media.licdn.com/dms/image/v2/C4D0BAQH3bbqytgjD-Q/company-logo_200_200/company-logo_200_200/0/1630524426845/logistiex_logo?e=2147483647&v=beta&t=tlQry8Tgy3BUwVAMydmrDbGI3lCoxZH9tdqdhj7k94Y",
     "color": "text-blue-500",
-    "socialUrl": null
+    "socialUrl": "www.logistiex.com"
   },
   {
     "type": "experience",
@@ -169,7 +169,7 @@
   ],
   "hero": {
     "greeting": "Hi, I'm",
-    "name_and_title": "Ashmeet Singh — A Python Devloper.",
+    "name_and_title": "Ashmeet Singh — A Software Developer.",
     "description": "I build robust, high-performance APIs and intelligent agents using Python and FastAPI and managing CI/CD pipelines for seamless delivery. Passionate about SaaS, driven by a keen eye for building product.",
     "technologies": [
       {
@@ -205,7 +205,7 @@
       {
         "label": "CV",
         "icon_name": "Download",
-        "href": "https://drive.google.com/file/d/19hd4AcqiAcOmNY0n2Q6r5E5ZlL0Amn8N/view?usp=sharing"
+        "href": "https://www.canva.com/design/DAGuv2bScUo/lNuMBP3S0YMXAVsaRFxINQ/view?utm_content=DAGuv2bScUo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf954d6e3fb#1"
       },
       {
         "label": "Community",

@@ -144,26 +144,7 @@
     @apply bg-background text-foreground;
   }
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
-.element-to-hide-scrollbar::-webkit-scrollbar {
-  display: none; /* or width: 0; */
-}
-/* Hide scrollbar for IE and Edge */
-.element-to-hide-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-}
-/* Hide scrollbar for Firefox */
-.element-to-hide-scrollbar {
-  scrollbar-width: none; /* Firefox */
-}
-/* In your globals.css */
-.hide-scrollbar-graph::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
-}
-.hide-scrollbar-graph {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
+
 
 /* WOW Send Button Styling */
 .ashmeet-wow-send-button {
@@ -217,20 +198,4 @@
     1rem,
     env(safe-area-inset-bottom)
   ); /* Use 1rem (p-4) or safe area, whichever is larger */
-}
-
-::-webkit-scrollbar {
-    width: 0; /* Vertical scrollbar width */
-    height: 0; /* Horizontal scrollbar height */
-    display: none; /* Fallback/additional measure */
-}
-body, html {
-    /* Sets the width to 'none' for Firefox */
-    scrollbar-width: none; 
-}
-
-/* 3. Target Internet Explorer and older Edge */
-/* Use the non-standard '-ms-overflow-style' property */
-body, html {
-    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
 }

@@ -185,10 +185,11 @@ export default function Projects({ limit }) {
 
             {/* View All Projects Link */}
             {limit && visibleProjects.length < allProjects.length && (
-                <div className="flex justify-center mt-8">
+                <div className="flex justify-center mt-8" id="about">
                     <Link
                         to="/projects"
                         className="px-6 py-3 rounded-md font-semibold text-sm sm:text-base bg-gray-200/30 dark:bg-gray-800/30 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-100 dark:hover:text-white backdrop-blur-md transition-all duration-300 shadow-inner text-shadow-lg "
+                        
                     >
                         View All Projects
                     </Link>

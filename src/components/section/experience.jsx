@@ -311,6 +311,10 @@ export default function Timeline() {
 
         <h3 className="text-3xl mb-8 text-gray-900 dark:text-white font-bold">
           {isExperienceView ? "Experience" : "Education"}
+           <NavigationButton
+            currentView={currentView}
+            setView={setCurrentView}
+          />
         </h3>
 
         {visibleItems.map((item, idx) => (
@@ -326,12 +330,6 @@ export default function Timeline() {
           </div>
         ))}
 
-        <div className="mt-8 w-full flex justify-center">
-          <NavigationButton
-            currentView={currentView}
-            setView={setCurrentView}
-          />
-        </div>
       </section>
     </div>
   );

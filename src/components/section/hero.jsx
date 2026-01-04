@@ -119,7 +119,7 @@ export default function Hero() {
   return (
     <section id="home" >
       {/* Greeting */}
-      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight ">
+      <h1 className="text-2xl sm:text-3xl md:pt-20 lg:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight ">
         <ShinyText
           text={greeting}
           disabled={false}

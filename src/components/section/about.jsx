@@ -443,10 +443,11 @@ export default function About() {
   return (
     <div
       className={`font-sans antialiased transition-colors duration-500 text-gray-900 dark:text-white`}
+      
     >
       <div className="w-full relative">
         {/* Header */}
-        <div className="mb-8 text-left pt-2" id="about">
+        <div className="mb-8 text-left pt-2">
           <p className="text-xs uppercase tracking-widest text-gray-400">
             About
           </p>
@@ -478,6 +479,10 @@ export default function About() {
               <h4 className="text-sm font-bold mb-3 text-gray-700 dark:text-gray-300">
                 Skills
               </h4>
+              <a href="https://www.upwork.com/freelancers/~01d2f1984d528e04dc?viewMode=1"
+               className="text-xs pb-3 font-bold text-blue-600 hover:underline">
+                Upwork Profile...
+              </a>
               <div 
                 className="w-full h-16 md:h-16 overflow-hidden relative border-y border-transparent py-1"
               >
@@ -530,24 +535,15 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="rounded-lg p-3 bg-white/6 dark:bg-white/4 border border-white/5">
+              <div className="rounded-lg p-3 bg-transparent dark:bg-none border border-white/5">
                 <div className="text-xs text-gray-500 uppercase">Current</div>
                 <div className="mt-2 flex items-center gap-3">
                   <div className="flex items-center gap-2">
-                    <span
-                      className={`inline-block w-3 h-3 rounded-sm ${
-                        cursorStatus === "Online"
-                          ? "bg-green-500"
-                          : cursorStatus === "Offline"
-                          ? "bg-gray-500"
-                          : "bg-red-500"
-                      }`}
-                    />
                     <div>
-                      <div className="text-xs  text-wrap text-center justify-center">
+                      <div className="text-[10px]  text-wrap  text-center justify-center text-break-words">
                         {currentProject}
                       </div>
-                      <div className="text-[11px] text-gray-500">
+                      <div className="text-[10px] text-gray-500 text-wrap">
                         {lastActivityAt
                           ? toLocalTimeString(lastActivityAt / 1000)
                           : "—"}
@@ -651,7 +647,7 @@ export default function About() {
 
         {/* --- Updated Contributions Heatmap Section (Mini Size & Scrollable Labels) --- */}
         <div className="pt-3 mb-10 rounded-2xl backdrop-blur-md bg-none">
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center justify-end mb-3">
             <div>
               <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300">
                 GitHub Activity
