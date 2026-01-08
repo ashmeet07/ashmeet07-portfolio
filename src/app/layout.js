@@ -1,7 +1,9 @@
+"use client";
+
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-
-import GhostCursorEffect from "@/components/ui/GhostCursor";
+import SplashCursor from "@/components/ui/SplashCursor";
 import { Analytics } from "@vercel/analytics/next";
 
 const poppins = Poppins({
@@ -11,23 +13,26 @@ const poppins = Poppins({
   display: "swap",
 });
 
-export const metadata = {
-  title: "Singh Ashmeet | Portfolio",
-  description: "Data Science Enth",
-  viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
-};
-
-
 export default function RootLayout({ children }) {
+  const [enableCursor, setEnableCursor] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(min-width: 1024px)").matches;
+  });
+
+  useLayoutEffect(() => {
+    const media = window.matchMedia("(min-width: 1024px)");
+
+    const listener = () => setEnableCursor(media.matches);
+    media.addEventListener("change", listener);
+
+    return () => media.removeEventListener("change", listener);
+  }, []);
+
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${poppins.variable} font-sans antialiased`}>
+      <body className={`${poppins.variable} font-sans antialiased relative`}>
+        {enableCursor && <SplashCursor />}
         {children}
-
-        {/* Cursor effect */}
-        <GhostCursorEffect />
-
-        {/* Vercel Analytics */}
         <Analytics />
       </body>
     </html>

@@ -51,7 +51,7 @@ const TechStackIcon = ({ name, status }) => {
   const IconComponent = (
     <TechnologyIcon
       name={name}
-      className={`w-3.5 h-3.5 mr-1 bg-transparent ${
+      className={`w-3.5 h-3.5 mr-1 bg-transparent  backdrop-blur-md ${
         isCurrent ? "text-blue-500 " : "text-gray-500 dark:text-gray-400"
       }`}
     />
@@ -81,7 +81,7 @@ const NavigationButton = ({ currentView, setView }) => {
 
   const targetView = isExperienceView ? "education" : "experience";
 
-  const classes = `bg-transparent  hover:bg-gray-200 dark:bg-black  dark:hover-border-2 transition-colors rounded-sm inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide 
+  const classes = `bg-transparent backdrop-blur-md  hover:bg-gray-200 dark:bg-black  dark:hover-border-2 transition-colors rounded-sm inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide 
     text-black
         transition duration-200 rounded-lg  
         dark:text-white`;
@@ -169,7 +169,7 @@ const TimelineItem = ({ item }) => {
 
   return (
     <div className="w-full">
-      <div className="flex w-full">
+      <div className="flex w-full  bg-transparent backdrop-blur-md rounded-md">
         {/* ICON/LOGO CONTAINER - Conditional Content */}
         <div className={iconContainerClasses}>{iconContent}</div>
 
@@ -209,7 +209,7 @@ const TimelineItem = ({ item }) => {
               {/* Expand/Collapse Button */}
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="ml-1 text-gray-500 dark:text-gray-400 hover:text-blue-500 transition p-1 rounded-full"
+                className="ml-1 text-gray-500 dark:text-gray-400 hover:text-blue-500 transition p-1 rounded-full "
                 title={isExpanded ? "Collapse Details" : "Expand Details"}
               >
                 {isExpanded ? (
@@ -242,7 +242,7 @@ const TimelineItem = ({ item }) => {
 
       {/* --- EXPANDABLE DETAILS CONTENT - ALWAYS VISIBLE IF EXPANDED --- */}
       {isExpanded && (
-        <div className="mt-3 pt-2">
+        <div className="mt-3 pt-2 bg-transparent backdrop-blur-md rounded-md">
           {/* Tech Stack (Only for Experience) */}
           {isExperience && item.technologies && (
             <>
