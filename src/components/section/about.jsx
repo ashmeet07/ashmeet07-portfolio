@@ -645,116 +645,109 @@ export default function About() {
         </div>
         {/* --- End of Block Chart & Details Section --- */}
 
-        {/* --- Updated Contributions Heatmap Section (Mini Size & Scrollable Labels) --- */}
-        <div className="pt-3 mb-10 rounded-2xl backdrop-blur-md bg-none">
-          <div className="flex items-center justify-end mb-3">
-            <div>
-              <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300">
-                GitHub Activity
-              </h4>
-              <div className="text-xs text-gray-500">
-                Contributions :{" "}
-                {contribLoading
-                  ? "Loading..."
-                  : contribTotal !== null
-                  ? `${contribTotal} total`
-                  : "—"}
-              </div>
+    {/* --- Full Teal Criss-Cross Heatmap Section --- */}
+<div className="pt-3 mb-10 rounded-2xl backdrop-blur-md bg-none">
+  <div className="flex items-center justify-between mb-3">
+    <h4 className="text-sm font-bold text-teal-600 dark:text-teal-400">
+      GitHub Activity
+    </h4>
+    <div className="text-xs text-gray-500">
+      {contribLoading ? "Loading..." : `${contribTotal || 0} contributions`}
+    </div>
+  </div>
+
+  {!contribLoading && graphData.weeks.length > 0 && (
+    <div className="p-3 rounded-lg bg-black/5 dark:bg-black/20 border border-teal-500/10">
+      {/* Scrollable Container */}
+      <div className="flex overflow-x-auto pb-1 relative hide-scrollbar-graph">
+        
+        {/* Month Labels */}
+        <div className="flex absolute top-0 left-0 right-0 h-4">
+          {graphData.months.map((month, index) => (
+            <div
+              key={month.label + index}
+              className="absolute text-[10px] font-medium text-teal-700/60 dark:text-teal-300/40"
+              style={{
+                left: `${month.weekIndex * (cellSize + cellGap)}px`,
+              }}
+            >
+              {month.label}
             </div>
+          ))}
+        </div>
+
+        {/* Heatmap Grid */}
+        <div className="flex mt-5">
+          {/* Vertical Weekday Labels */}
+          <div className="flex flex-col items-center flex-shrink-0 mr-2">
+            {["", "Mon", "", "Wed", "", "Fri", ""].map((day, i) => (
+              <div 
+                key={i} 
+                className="text-[9px] font-bold text-teal-800/50 dark:text-teal-200/30" 
+                style={{ height: weekdayLabelLineHeight, lineHeight: weekdayLabelLineHeight }}
+              >
+                {day}
+              </div>
+            ))}
           </div>
 
-          {contribLoading && (
-            <div className="text-xs text-gray-500">Loading contributions…</div>
-          )}
+          {/* Columns (Weeks) */}
+          <div className="flex flex-shrink-0" style={{ gap: `${cellGap}px` }}>
+            {graphData.weeks.map((week, wIdx) => (
+              <div key={wIdx} className="flex flex-col" style={{ gap: `${cellGap}px` }}>
+                {week.map((slot, dIdx) => {
+                  if (!slot) return (
+                    <div key={dIdx} style={{ width: cellSize, height: cellSize }} className="opacity-0" />
+                  );
+                  
+                  const count = Number(slot.contributionCount || 0);
+                  let cellColor;
 
-          {!contribLoading && (!contribDays || contribDays.length === 0) && (
-            <div className="text-xs text-gray-500">
-              No contribution data available
-            </div>
-          )}
+                  if (count <= 0) {
+                    // Criss-cross pattern for empty days
+                    const isAlt = (wIdx + dIdx) % 2 === 0;
+                    cellColor = isAlt 
+                      ? "rgba(20, 184, 166, 0.05)" // Very faint teal
+                      : "rgba(20, 184, 166, 0.15)"; // Slightly darker teal
+                  } else {
+                    // Teal scale for active days
+                    if (count <= 3) cellColor = "#2dd4bf"; // Teal 400
+                    else if (count <= 7) cellColor = "#14b8a6"; // Teal 500
+                    else if (count <= 15) cellColor = "#0d9488"; // Teal 600
+                    else cellColor = "#0f766e"; // Teal 700
+                  }
 
-          {!contribLoading && graphData.weeks.length > 0 && (
-            <div className="p-3 rounded-lg bg-gradient-to-b from-white/3 to-white/5 dark:from-black/20 dark:to-black/10">
-
-              {/* 🛑 Scrollable Container with Hidden Scrollbar */}
-              <div className="flex overflow-x-auto pb-1 relative hide-scrollbar-graph"> 
-                
-                {/* Month Labels Container (Positioned absolutely inside scroll container) */}
-                <div className="flex absolute top-0 left-0 right-0 h-4 mb-1">
-                    {graphData.months.map((month, index) => (
-                        <div
-                            key={month.label + index}
-                            className="absolute text-[10px] text-gray-500 dark:text-gray-400"
-                            style={{
-                                left: `${month.weekIndex * (cellSize + cellGap)}px`,
-                                transform: 'translateX(-50%)',
-                            }}
-                        >
-                            {month.label}
-                        </div>
-                    ))}
-                </div>
-
-                {/* Main Graph Area: Flex container for vertical day labels and week columns */}
-                <div className="flex mt-5"> {/* Add margin top to accommodate the month labels */}
-
-                    {/* Left: Vertical Weekday labels (Mon, Wed, Fri) */}
-                    <div className="flex flex-col items-center flex-shrink-0 mr-1.5">
-                      <div className="text-[10px] text-gray-400" style={{ height: weekdayLabelLineHeight, lineHeight: weekdayLabelLineHeight }}></div> {/* Sun */}
-                      <div className="text-[10px] text-gray-400" style={{ height: weekdayLabelLineHeight, lineHeight: weekdayLabelLineHeight }}>Mon</div> {/* Mon */}
-                      <div className="text-[10px] text-gray-400" style={{ height: weekdayLabelLineHeight, lineHeight: weekdayLabelLineHeight }}></div> {/* Tue */}
-                      <div className="text-[10px] text-gray-400" style={{ height: weekdayLabelLineHeight, lineHeight: weekdayLabelLineHeight }}>Wed</div> {/* Wed */}
-                      <div className="text-[10px] text-gray-400" style={{ height: weekdayLabelLineHeight, lineHeight: weekdayLabelLineHeight }}></div> {/* Thu */}
-                      <div className="text-[10px] text-gray-400" style={{ height: weekdayLabelLineHeight, lineHeight: weekdayLabelLineHeight }}>Fri</div> {/* Fri */}
-                      <div className="text-[10px] text-gray-400" style={{ height: weekdayLabelLineHeight, lineHeight: weekdayLabelLineHeight }}></div> {/* Sat */}
-                    </div>
-
-                    {/* Right: Week columns (The actual heatmap) */}
-                    <div className="flex flex-shrink-0" style={{ gap: `${cellGap}px` }}>
-                      {graphData.weeks.map((week, wIdx) => (
-                        <div key={wIdx} className="flex flex-col" style={{ gap: `${cellGap}px` }}>
-                          {week.map((slot, dow) => {
-                            if (!slot) {
-                              return (
-                                <div
-                                  key={dow}
-                                  style={{
-                                    width: cellSize,
-                                    height: cellSize,
-                                  }}
-                                  className="rounded-sm opacity-0"
-                                />
-                              );
-                            }
-                            const count = Number(
-                              slot.contributionCount || 0
-                            );
-                            const color = slot.color || colorForCount(count);
-                            return (
-                              <div
-                                key={dow}
-                                title={`${
-                                  slot.date
-                                }: ${count} contribution${
-                                  count !== 1 ? "s" : ""
-                                }`}
-                                style={{
-                                  width: cellSize,
-                                  height: cellSize,
-                                  backgroundColor: color,
-                                }}
-                                className="rounded-sm transform transition-all duration-150 hover:scale-110 shadow-sm cursor-pointer"
-                              />
-                            );
-                          })}
-                        </div>
-                      ))}
-                    </div>
-                </div> 
-              </div> 
-            </div>
-          )}
+                  return (
+                    <div
+                      key={dIdx}
+                      title={`${slot.date}: ${count} contributions`}
+                      style={{
+                        width: cellSize,
+                        height: cellSize,
+                        backgroundColor: cellColor,
+                      }}
+                      className="rounded-[1px] transition-transform duration-200 hover:scale-150 hover:z-10 cursor-crosshair"
+                    />
+                  );
+                })}
+              </div>
+            ))}
+          </div>
         </div>
+      </div>
+
+      {/* Teal Legend */}
+      <div className="flex items-center justify-end gap-1 mt-3">
+        <span className="text-[10px] text-gray-500 mr-1">Less</span>
+        <div style={{ width: cellSize, height: cellSize }} className="bg-teal-900/10 rounded-sm" />
+        <div style={{ width: cellSize, height: cellSize }} className="bg-teal-400 rounded-sm" />
+        <div style={{ width: cellSize, height: cellSize }} className="bg-teal-600 rounded-sm" />
+        <div style={{ width: cellSize, height: cellSize }} className="bg-teal-800 rounded-sm" />
+        <span className="text-[10px] text-gray-500 ml-1">More</span>
+      </div>
+    </div>
+  )}
+</div>
         {/* --- End of Updated Contributions Heatmap Section --- */}
       </div>
     </div>
